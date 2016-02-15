@@ -1,0 +1,463 @@
+//
+// Copyright (c) Microsoft Corporation.  All rights reserved.
+//
+//
+// Use of this source code is subject to the terms of the Microsoft end-user
+// license agreement (EULA) under which you licensed this SOFTWARE PRODUCT.
+// If you did not accept the terms of the EULA, you are not authorized to use
+// this source code. For a copy of the EULA, please see the LICENSE.RTF on your
+// install media.
+//
+//Microsoft Developer Studio generated resource script.
+//
+#include "resource.h"
+
+#define APSTUDIO_READONLY_SYMBOLS
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 2 resource.
+//
+#ifndef UNDER_CE
+#include "afxres.h"
+#endif // !UNDER_CE
+
+#include "newres.h"
+#define APSTUDIO_HIDDEN_SYMBOLS
+#include "windows.h"
+#undef APSTUDIO_HIDDEN_SYMBOLS
+#include "commctrl.h"
+#include "resource.h"
+
+/////////////////////////////////////////////////////////////////////////////
+#undef APSTUDIO_READONLY_SYMBOLS
+
+/////////////////////////////////////////////////////////////////////////////
+// English (U.S.) resources
+
+#if !defined(AFX_RESOURCE_DLL) || defined(AFX_TARG_ENU)
+#ifdef _WIN32
+LANGUAGE LANG_ENGLISH, SUBLANG_ENGLISH_US
+#pragma code_page(1252)
+#endif //_WIN32
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Menubar
+//
+
+IDR_MENUBAR MENU DISCARDABLE 
+BEGIN
+    POPUP "&File"
+    BEGIN
+        MENUITEM "&Open...\tCtrl+O",            ID_FILE_OPEN_URL
+        MENUITEM "&Close\tCtrl+C",              ID_FILE_CLOSE
+        MENUITEM SEPARATOR
+        MENUITEM "Playlists",                   ID_FILE_PLAYLISTS
+        POPUP    "Favorites"
+        BEGIN
+            MENUITEM "Add to Favorites"         ID_ADD_TO_FAVORITES
+            MENUITEM "Organize Favorites"       ID_ORGANIZE_FAVORITES
+            MENUITEM SEPARATOR
+        END
+        MENUITEM SEPARATOR
+        MENUITEM "E&xit",                       ID_FILE_EXIT
+    END
+    POPUP "&View"
+    BEGIN
+#ifndef CEPLAYER_SKIN
+        MENUITEM "Standard",                    ID_VIEW_STANDARD
+        MENUITEM "Minimal",                     ID_VIEW_MINIMAL
+        MENUITEM SEPARATOR
+#endif /* CEPLAYER_SKIN */
+        POPUP "&Zoom"
+        BEGIN
+            MENUITEM "50%",                         ID_VIEW_ZOOM_50
+            MENUITEM "100%",                        ID_VIEW_ZOOM_100
+            MENUITEM "200%",                        ID_VIEW_ZOOM_200
+        END
+        MENUITEM "Full Screen\tAlt+Enter",      ID_VIEW_FULLSCREEN
+        MENUITEM SEPARATOR
+        MENUITEM "Statistics...",               ID_VIEW_STATISTICS
+        MENUITEM "Properties...",               ID_VIEW_PROPERTIES
+        MENUITEM "Options...",                  ID_VIEW_OPTIONS
+    END
+    POPUP "&Playback"
+    BEGIN
+        MENUITEM "Play\tEnter",                 ID_PLAYBACK_PLAY
+        MENUITEM "Pause\tCtrl+P",               ID_PLAYBACK_PAUSE
+        MENUITEM "Stop\tCtrl+S",                ID_PLAYBACK_STOP
+        MENUITEM "Mute\tCtrl+M",                ID_PLAYBACK_MUTE
+        MENUITEM "Repeat\tCtrl+R",              ID_PLAYBACK_REPEAT
+        MENUITEM "Shuffle\tCtrl+H",             ID_PLAYBACK_SHUFFLE
+    END
+END
+
+IDM_TRACKS_CONTEXT MENU DISCARDABLE
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Play selection",              ID_PLAY_SONG
+        MENUITEM SEPARATOR
+        MENUITEM "Move earlier",                ID_REORDER_UP
+        MENUITEM "Move later",                  ID_REORDER_DOWN
+        MENUITEM SEPARATOR
+        MENUITEM "Delete",                      ID_DELETE_TRACKS
+    END
+    POPUP ""
+    BEGIN
+        MENUITEM "Local Content",               ID_ALL_MUSIC
+        MENUITEM "Favorites",                   ID_FAVORITES
+        MENUITEM SEPARATOR
+        MENUITEM SEPARATOR
+        MENUITEM "Organize Playlists",          ID_ALL_PLAYLISTS
+    END
+END
+
+IDM_PLAYLISTS_CONTEXT MENU DISCARDABLE
+BEGIN
+    POPUP ""
+    BEGIN
+        MENUITEM "Create Copy",                 ID_CREATE_COPY
+        MENUITEM SEPARATOR
+        MENUITEM "New",                         IDC_NEW_PLAYLIST
+        MENUITEM "Rename",                      IDC_RENAME_PLAYLIST
+        MENUITEM SEPARATOR
+        MENUITEM "Delete",                      IDC_DELETE_PLAYLIST
+    END
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialogs
+//
+
+ID_ACCEL ACCELERATORS DISCARDABLE
+BEGIN
+    "O",        ID_FILE_OPEN_URL,        VIRTKEY, CONTROL
+    "C",        ID_FILE_CLOSE,           VIRTKEY, CONTROL
+    VK_RETURN,  ID_PLAYBACK_PLAY,        VIRTKEY
+    "P",        ID_PLAYBACK_PAUSE,       VIRTKEY, CONTROL
+    "S",        ID_PLAYBACK_STOP,        VIRTKEY, CONTROL
+    "M",        ID_PLAYBACK_MUTE,        VIRTKEY, CONTROL
+    "R",        ID_PLAYBACK_REPEAT,      VIRTKEY, CONTROL
+    "H",        ID_PLAYBACK_SHUFFLE,     VIRTKEY, CONTROL
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Dialogs
+//
+
+IDD_OPENURL DIALOG DISCARDABLE  0, 0, 137, 83
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Open URL"
+BEGIN
+    LTEXT           "Type the location of a movie or audio file (on the internet or this device) and the player will open it for you.",
+                    ID_DLG_OPENURL0,30,5,98,40
+    COMBOBOX        IDC_URL_HISTORY,5,45,127,75, CBS_DROPDOWN | 
+                    CBS_AUTOHSCROLL | WS_VSCROLL | WS_TABSTOP
+    DEFPUSHBUTTON   "OK",IDOK,5,64,39,14
+    PUSHBUTTON      "Cancel",IDCANCEL,49,64,39,14
+    PUSHBUTTON      "&Browse…",ID_DLG_BROWSE,93,64,39,14
+    ICON            IDI_APPICON,IDC_STATIC,5,10,20,20
+END
+
+IDD_STATISTICS DIALOG DISCARDABLE  0, 0, 159, 186
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Statistics"
+BEGIN
+    CONTROL         "List1",IDC_STATISTICS_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,5,5,150,174,WS_EX_CLIENTEDGE
+END
+
+IDD_PROPERTIES DIALOG DISCARDABLE  0, 0, 159, 186
+STYLE WS_POPUP | WS_VISIBLE | WS_CAPTION | WS_SYSMENU
+CAPTION "Properties"
+BEGIN
+    CONTROL         "List1",IDC_PROPERTIES_LIST,"SysListView32",LVS_REPORT | 
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER | WS_BORDER | 
+                    WS_TABSTOP,5,5,150,174,WS_EX_CLIENTEDGE
+END
+
+#ifdef CEPLAYER_MULT_WINDOW
+
+IDD_OPTIONS DIALOG DISCARDABLE  0, 0, 150, 165
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Options"
+BEGIN
+    CONTROL         "Use the same player window for each media file played.",
+                    IDC_SINGLE_PLAYER,"Button",BS_AUTORADIOBUTTON | 
+                    BS_MULTILINE | WS_GROUP | WS_TABSTOP,15,10,120,20
+    CONTROL         "Open a new player window for each media file played.",
+                    IDC_MULTI_PLAYER,"Button",BS_AUTORADIOBUTTON | 
+                    BS_MULTILINE | WS_TABSTOP,15,31,120,20
+    CONTROL         "Play once",IDC_PLAY_ONCE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,15,105,65,15
+    CONTROL         "Repeat forever",IDC_PLAY_FOREVER,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,15,120,65,15
+    RTEXT           "Zoom:",IDC_STATIC,85,110,24,10,
+    COMBOBOX        IDC_ZOOM,90,120,45,45,CBS_DROPDOWNLIST | WS_TABSTOP
+    GROUPBOX        "Player Windows",IDC_STATIC,5,0,140,60
+    GROUPBOX        "Playback",IDC_STATIC,5,95,140,42
+    CONTROL         "Slider1",IDC_WMBUFFERINGSLIDER,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,8,70,90,20
+    EDITTEXT        IDC_WMBUFFERINGVALUE,100,75,35,14,ES_READONLY
+    GROUPBOX        "Windows Media Buffering",IDC_STATIC,5,60,140,35
+    EDITTEXT        IDC_MEDIASHARE,10,149,130,12
+    GROUPBOX        "Media Network Share",IDC_STATIC,5,140,140,25
+END
+
+#else /* !CEPLAYER_MULT_WINDOW */
+
+IDD_OPTIONS DIALOG DISCARDABLE  0, 0, 137, 114
+STYLE DS_MODALFRAME | WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Options"
+BEGIN
+    CONTROL         "Play once",IDC_PLAY_ONCE,"Button",BS_AUTORADIOBUTTON | 
+                    WS_GROUP | WS_TABSTOP,11,41,65,15
+    CONTROL         "Repeat forever",IDC_PLAY_FOREVER,"Button",
+                    BS_AUTORADIOBUTTON | WS_TABSTOP,11,52,65,15
+    RTEXT           "Zoom:",IDC_STATIC,78,43,24,10,
+    COMBOBOX        IDC_ZOOM,81,53,45,45,CBS_DROPDOWNLIST | WS_TABSTOP
+    GROUPBOX        "Playback",IDC_STATIC,5,32,127,38
+    CONTROL         "Slider1",IDC_WMBUFFERINGSLIDER,"msctls_trackbar32",
+                    TBS_AUTOTICKS | TBS_TOP | WS_TABSTOP,7,7,68,20
+    EDITTEXT        IDC_WMBUFFERINGVALUE,81,12,40,12,ES_READONLY
+    GROUPBOX        "Windows Media Buffering",IDC_STATIC,5,0,127,30
+    EDITTEXT        IDC_MEDIASHARE,10,81,117,12
+    GROUPBOX        "Media Network Share",IDC_STATIC,5,72,127,25
+END
+
+#endif /* CEPLAYER_MULT_WINDOW */
+
+IDD_ADD_TRACKS DIALOG DISCARDABLE  0, 0, 137, 175
+STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Windows Media"
+BEGIN
+    CONTROL         "List1",IDC_TRACK_LIST,"SysListView32",LVS_REPORT |
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_ALIGNLEFT |
+                    LVS_NOCOLUMNHEADER | LVS_NOSORTHEADER |
+                    LVS_SHAREIMAGELISTS | WS_TABSTOP, 5,32,127,138
+    CONTROL         "Add Content: ",IDC_ADD_TRACKS,"Static",
+                    SS_LEFTNOWORDWRAP | SS_NOPREFIX,5,2,127,12
+    PUSHBUTTON      "Select All",ID_SELECT_ALL,5,16,50,14
+END
+
+IDD_SELECT_PLAYLIST DIALOG DISCARDABLE  0, 0, 137, 88
+STYLE DS_SETFOREGROUND | DS_CENTER | WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_TOPMOST
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Select Playlist"
+BEGIN
+    LTEXT           "The contents of your most recent playlist are not currently available.",
+                    IDC_STATIC,15,5,112,20
+    CONTROL         "Select 'Local Content'",IDC_SELECT_ALL_MUSIC,"Button",
+                    BS_AUTORADIOBUTTON | WS_GROUP | WS_TABSTOP,23,30,97,11
+    CONTROL         "Select a different playlist",IDC_SELECT_OTHER_PLAYLIST,
+                    "Button",BS_AUTORADIOBUTTON | WS_TABSTOP,23,43,97,11
+    PUSHBUTTON      "OK",IDOK,48,57,40,14
+END
+
+IDD_PLAYLIST_ADD_DELETE DIALOG DISCARDABLE  0, 0, 137, 175
+STYLE WS_POPUP | WS_CAPTION | WS_SYSMENU
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Organize Playlists"
+BEGIN
+    PUSHBUTTON      "New",IDC_NEW_PLAYLIST,5,5,39,16,WS_TABSTOP
+    PUSHBUTTON      "Rename",IDC_RENAME_PLAYLIST,49,5,39,16,WS_DISABLED |
+                    WS_TABSTOP
+    PUSHBUTTON      "Delete",IDC_DELETE_PLAYLIST,93,5,39,16,WS_DISABLED |
+                    WS_TABSTOP
+    CONTROL         "List1",IDC_PLAYLISTS,"SysListView32",LVS_REPORT |
+                    LVS_SINGLESEL | LVS_SHOWSELALWAYS | LVS_EDITLABELS |
+                    LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER | WS_TABSTOP |
+                    LVS_SHAREIMAGELISTS,5,23,127,139
+END
+
+IDD_PLAYLIST_TRACKS DIALOG DISCARDABLE  0, 0, 137, 175
+STYLE WS_POPUP | WS_CAPTION
+EXSTYLE WS_EX_CAPTIONOKBTN
+CAPTION "Content and Playlists"
+BEGIN
+    CONTROL         "List1",IDC_TRACK_LIST,"SysListView32",LVS_REPORT |
+                    LVS_SHOWSELALWAYS | LVS_SHAREIMAGELISTS | WS_CHILD |
+                    LVS_NOLABELWRAP | LVS_ALIGNLEFT | LVS_NOCOLUMNHEADER |
+                    LVS_NOSORTHEADER | WS_VISIBLE | WS_TABSTOP, 5,18,127,140
+END
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Bitmaps
+//
+
+IDB_PLAYLISTMB           BITMAP  "res\\playlistmb.bmp"
+IDB_PLAYLIST             BITMAP  "res\\Playlist.bmp"
+IDB_FOLDERS              BITMAP  "res\\folders.bmp"
+IDB_LOCATIONLIST         BITMAP  "res\\location.bmp"
+IDB_MAINMENU             BITMAP  "res\\mainmenu.bmp"
+IDB_FSERROR_BITMAP       BITMAP  "res\\error.bmp"
+IDB_GOWEB                BITMAP  "res\\goweb.bmp"
+
+#ifdef CEPLAYER_SKIN
+IDB_NEXT_UP              BITMAP  "res\\next_up.bmp"
+IDB_NEXT_DOWN            BITMAP  "res\\next_down.bmp"
+IDB_NEXT_DISABLED        BITMAP  "res\\next_disabled.bmp"
+IDB_PREV_UP              BITMAP  "res\\prev_up.bmp"
+IDB_PREV_DOWN            BITMAP  "res\\prev_down.bmp"
+IDB_PREV_DISABLED        BITMAP  "res\\prev_disabled.bmp"
+IDB_FF_UP                BITMAP  "res\\forward_up.bmp"
+IDB_FF_DOWN              BITMAP  "res\\forward_down.bmp"
+IDB_FF_DISABLED          BITMAP  "res\\forward_disabled.bmp"
+IDB_FR_UP                BITMAP  "res\\rewind_up.bmp"
+IDB_FR_DOWN              BITMAP  "res\\rewind_down.bmp"
+IDB_FR_DISABLED          BITMAP  "res\\rewind_disabled.bmp"
+IDB_SOUND_UP             BITMAP  "res\\sound_up.bmp"
+IDB_SOUND_DOWN           BITMAP  "res\\sound_down.bmp"
+IDB_SOUND_DISABLED       BITMAP  "res\\sound_disabled.bmp"
+IDB_SEEK_FOREGROUND      BITMAP  "res\\seek_fore.bmp"
+IDB_SEEK_BACKGROUND      BITMAP  "res\\seek_bkg.bmp"
+IDB_STOP_UP              BITMAP  "res\\stop_up.bmp"
+IDB_STOP_DOWN            BITMAP  "res\\stop_down.bmp"
+IDB_STOP_DISABLED        BITMAP  "res\\stop_disabled.bmp"
+IDB_VOLUME_FOREGROUND    BITMAP  "res\\vol_sldr_fore.bmp"
+IDB_VOLUME_BACKGROUND    BITMAP  "res\\vol_sldr_bkg.bmp"
+IDB_PAUSE_UP             BITMAP  "res\\pause_up.bmp"
+IDB_PAUSE_DOWN           BITMAP  "res\\pause_down.bmp"
+IDB_PLAY_UP              BITMAP  "res\\play_up.bmp"
+IDB_PLAY_DOWN            BITMAP  "res\\play_down.bmp"
+IDB_PLAY_DISABLED        BITMAP  "res\\play_disabled.bmp"
+IDB_THUMB_UP             BITMAP  "res\\slider_up.bmp"
+IDB_THUMB_DOWN           BITMAP  "res\\slider_down.bmp"
+#endif /* CEPLAYER_SKIN */
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// Icon
+//
+
+// Icon with lowest ID value placed first to ensure application icon
+// remains consistent on all systems.
+IDI_APPICON             ICON    DISCARDABLE     "res\\icon1.ico"
+// icons used in explorer
+IDI_AUDIOICON           ICON    "res\\audio.ico"
+IDI_VIDEOICON           ICON    "res\\video.ico"
+
+#ifdef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// TEXTINCLUDE
+//
+
+1 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "resource.h\0"
+END
+
+2 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "#include ""newres.h""\r\n"
+    "#define APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""windows.h""\r\n"
+    "#undef APSTUDIO_HIDDEN_SYMBOLS\r\n"
+    "#include ""commctrl.h""\r\n"
+    "#include ""resource.h""\r\n"
+    "\0"
+END
+
+3 TEXTINCLUDE DISCARDABLE 
+BEGIN
+    "\r\n"
+    "\0"
+END
+
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// DESIGNINFO
+//
+
+#ifdef APSTUDIO_INVOKED
+GUIDELINES DESIGNINFO DISCARDABLE 
+BEGIN
+    IDD_OPENURL, DIALOG
+    BEGIN
+        RIGHTMARGIN, 167
+        BOTTOMMARGIN, 75
+    END
+
+    IDD_ABOUT, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 152
+        TOPMARGIN, 7
+    END
+
+    IDD_OPTIONS, DIALOG
+    BEGIN
+        LEFTMARGIN, 7
+        RIGHTMARGIN, 220
+        TOPMARGIN, 7
+        BOTTOMMARGIN, 110
+    END
+END
+#endif    // APSTUDIO_INVOKED
+
+
+/////////////////////////////////////////////////////////////////////////////
+//
+// String Table
+//
+
+STRINGTABLE DISCARDABLE 
+BEGIN
+    ID_FILENAME1_REGKEY     "Filename1"
+    ID_FILENAME2_REGKEY     "Filename2"
+    ID_FILENAME3_REGKEY     "Filename3"
+    ID_FILENAME4_REGKEY     "Filename4"
+    ID_FILENAME5_REGKEY     "Filename5"
+    ID_PLAYLIST1_REGKEY     "Playlist1"
+    ID_PLAYLIST2_REGKEY     "Playlist2"
+    ID_PLAYLIST3_REGKEY     "Playlist3"
+    ID_PLAYLIST4_REGKEY     "Playlist4"
+    ID_PLAYLIST5_REGKEY     "Playlist5"
+    ID_PLAYLIST6_REGKEY     "Playlist6"
+    ID_PLAYLIST7_REGKEY     "Playlist7"
+    IDS_STREAM_MULTICAST_NO_CONNECTION "Multicast (with no connection)"
+    IDS_STREAM_MULTICAST    "Multicast (with connection)"
+    IDS_STREAM_UNICAST_UDP  "Unicast (UDP)"
+    IDS_STREAM_UNICAST_TCP  "Unicast (TCP)"
+    IDS_STREAM_UNICAST_DISTRIBUTION "Unicast (Distribution)"
+    IDS_STREAM_UNICAST_HTTP "Unicast (HTTP)"
+    IDS_STREAM_NETWORKED_FILE "Networked File"
+    IDS_APP_TITLE           "Windows Media"
+    IDS_DELETE_CONFIRM      "Are you sure you want to delete the playlist?"
+    IDS_DELETE_TRACK        "Are you sure you want to permanantly delete this item?"
+    IDS_DELETE_FAIL         "Unable to delete this item!"
+    IDS_RENAME_FAIL         "Unable to rename this item.  Perhaps you have a duplicate item name already."
+    IDS_PLAYLIST_EMPTY      "Empty Playlist"
+    IDS_VIEW_LOCAL_CONTENT  "The contents of the selected Playlist are not available.  Would you like to view Local Content?"
+	IDS_PLAYLIST_NAME_INVALID "Invalid characters in Playlist name."
+END
+
+#endif    // English (U.S.) resources
+/////////////////////////////////////////////////////////////////////////////
+
+
+
+#ifndef APSTUDIO_INVOKED
+/////////////////////////////////////////////////////////////////////////////
+//
+// Generated from the TEXTINCLUDE 3 resource.
+//
+
+
+/////////////////////////////////////////////////////////////////////////////
+#endif    // not APSTUDIO_INVOKED
+

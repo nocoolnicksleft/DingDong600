@@ -1,0 +1,14 @@
+<alphabet>
+ <letter name="A">
+  <image filename="apfel.bmp" title="Apfel" type="0" />
+  <image filename="anton.bmp" title="Anton" type="0" />
+ </letter>
+ <letter name="B">
+  <image filename="banane.bmp" title="Banane" type="0"/>
+  <image filename="beton.bmp" title="Beton" type="0" />
+ </letter>
+
+ <letter name="K">
+  <image filename="nekobasu.gif" title="Katerbus" type="1"/>
+ </letter>
+</alphabet>
